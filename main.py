@@ -1,7 +1,6 @@
 import os
 
 from pyfiglet import Figlet
-from pick import pick
 from lib.coffee_machine import CoffeeMachine
 from lib.drinks import drinks
 
