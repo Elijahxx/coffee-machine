@@ -9,9 +9,17 @@ f = Figlet(font='slant')
 title = "\nWelcome to\n" + f.renderText("Python Coffee!")
 
 
-def make_coffee(machine):
+def greet():
     print("\033[H\033[J")
     print(title)
+
+
+def wait_action():
+    return input("Press [Enter] to continue...")
+
+
+def make_coffee(machine):
+    greet()
     print("Choose your beverage wisely, we have like three of them!")
     options = ["Espresso", "Latte", "Cappucino", "Back"]
     for i, option in enumerate(options):
@@ -27,33 +35,32 @@ def make_coffee(machine):
         return
     else:
         print("I don't know this drink, sir!")
-        input("Press [Enter] to continue...")
-
+        wait_action()
 
 def fill_machine(machine):
     message = machine.fill()
     print(message)
-    input("Press [Enter] to continue...")
+    wait_action()
 
 
 def withdraw_money(machine):
     message = machine.withdraw_money()
     print(message)
-    input("Press [Enter] to continue...")
+    wait_action()
 
 
 def show_data(machine):
-    print("\033[H\033[J")
-    print(title)
+    greet()
     print("At your service, sir!")
     print("Beans: {}".format(machine.beans))
     print("Water: {}".format(machine.water))
     print("Cups: {}".format(machine.cups))
     print("Money: {}".format(machine.money))
-    input("Press [Enter to continue...") 
+    wait_action()
+
 
 def show_main_menu():
-    print(title)
+    greet()
     options = ["Make coffee", "Fill the machine", "Withdraw money", "Show data", "Exit"]
     for i, option in enumerate(options):
         print("[" + str(i + 1) + "] " + option)
@@ -62,7 +69,6 @@ def show_main_menu():
 machine = CoffeeMachine()
 loop = True
 while loop:
-    print("\033[H\033[J")
     show_main_menu()
     try:
         choice = int(input("Enter your choice [1-5]: "))
@@ -80,8 +86,7 @@ while loop:
                 exit()
         else:
             print("Indeed, sir!")
-            input("Press [Enter] to continue...")
+            wait_action()
     except ValueError:
         print("I don't speak this language, sir!")
-        input("Press [Enter] to continue...")
-        print("I don't speak this language, sir!")
+        wait_action()
