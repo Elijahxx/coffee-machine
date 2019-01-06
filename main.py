@@ -5,7 +5,7 @@ from lib.coffee_machine import CoffeeMachine
 from lib.drinks import drinks
 
 
-f = Figlet(font='slant')
+f = Figlet(font="slant")
 title = "\nWelcome to\n" + f.renderText("Python Coffee!")
 
 
@@ -37,6 +37,7 @@ def make_coffee(machine):
         print("I don't know this drink, sir!")
         wait_action()
 
+
 def fill_machine(machine):
     message = machine.fill()
     print(message)
@@ -61,7 +62,8 @@ def show_data(machine):
 
 def show_main_menu():
     greet()
-    options = ["Make coffee", "Fill the machine", "Withdraw money", "Show data", "Exit"]
+    options = ["Make coffee", "Fill the machine", "Withdraw money",
+               "Show data", "Exit"]
     for i, option in enumerate(options):
         print("[" + str(i + 1) + "] " + option)
 
